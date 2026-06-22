@@ -1,6 +1,8 @@
 # PokeReplicas Roster Manager
 
 A Brave extension for [PokeReplicas](https://pokemonchampionsreplicateams.com/) that lets you track your Pokémon Champions box (owned vs rented) and sort teams by how many Pokémon you can actually use.
+<img width="424" height="653" alt="image" src="https://github.com/user-attachments/assets/c985d1b1-9cc7-4426-9e49-2d7bc9175907" />
+<img width="1183" height="560" alt="image" src="https://github.com/user-attachments/assets/7904b384-2fa7-4c09-a10b-9d85df9cc1b5" />
 
 ## Install in Brave
 
