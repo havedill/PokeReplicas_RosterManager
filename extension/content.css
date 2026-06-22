@@ -1,0 +1,115 @@
+.fb-field.ext-injected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  margin-left: 8px;
+  background: linear-gradient(135deg, #3c1053, #5b1f8a);
+  border-radius: 999px;
+  border: 2px solid #b388ff;
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.45);
+}
+
+.ext-sort-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #f3e5ff;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.ext-sort-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: #ce93d8;
+}
+
+article.tc,
+a.td-similar-card {
+  overflow: visible;
+}
+
+.ext-owned {
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #4caf50, 0 0 10px rgba(76, 175, 80, 0.65);
+  background-color: rgba(76, 175, 80, 0.18);
+}
+
+.ext-rented {
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #ffc107, 0 0 10px rgba(255, 193, 7, 0.65);
+  background-color: rgba(255, 193, 7, 0.18);
+}
+
+.ext-missing {
+  opacity: 0.45;
+  filter: grayscale(85%);
+}
+
+.ext-match-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(12, 8, 24, 0.88);
+  border: 2px solid #8a2be2;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.ext-match-main {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+
+.ext-match-sub {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #d7c7ef;
+  text-align: center;
+}
+
+.ext-owned-text {
+  color: #81c784;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.ext-rented-text {
+  color: #ffd54f;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.ext-dot {
+  margin: 0 2px;
+  opacity: 0.7;
+}
+
+article.tc.ext-has-match {
+  outline: 2px solid rgba(138, 43, 226, 0.35);
+  outline-offset: 2px;
+}
+
+article.tc.ext-full-match .ext-match-overlay {
+  border-color: #4caf50;
+  box-shadow: 0 0 14px rgba(76, 175, 80, 0.45);
+}
+
+article.tc.ext-full-match .ext-match-main {
+  color: #a5d6a7;
+}

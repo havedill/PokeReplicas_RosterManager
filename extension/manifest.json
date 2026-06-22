@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "PokeReplicas Roster Manager",
+  "version": "1.1",
+  "description": "Manage your Pokémon roster and sort PokeReplicas teams by matched Pokémon.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://pokemonchampionsreplicateams.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PokeReplicas Roster"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://pokemonchampionsreplicateams.com/*"],
+      "css": ["content.css"],
+      "js": ["roster-utils.js", "content.js"]
+    }
+  ],
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

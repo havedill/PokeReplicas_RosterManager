@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pokebox</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <h1>Pokebox</h1>
+      <p class="subtitle">Your Champions roster</p>
+    </div>
+    <div class="stats" id="statsBar">
+      <span class="stat owned"><strong id="ownedCount">0</strong> owned</span>
+      <span class="stat rented"><strong id="rentedCount">0</strong> rented</span>
+    </div>
+  </header>
+
+  <section class="panel search-panel">
+    <label class="field-label" for="searchInput">Add Pokémon</label>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search e.g. Garchomp, Rotom-Wash..." autocomplete="off">
+      <ul id="autocompleteList" class="autocomplete-items"></ul>
+    </div>
+    <div class="add-default">
+      <span class="field-label">Add as</span>
+      <div class="segmented" role="group" aria-label="Default status">
+        <button type="button" class="segment on" data-status="owned">Owned</button>
+        <button type="button" class="segment" data-status="rented">Rented</button>
+      </div>
+    </div>
+    <p class="hint">Tip: ↑↓ to browse, Enter to add</p>
+  </section>
+
+  <section class="panel controls-panel">
+    <label class="toggle-row">
+      <input type="checkbox" id="prioritizeOwned">
+      <span>Prioritize fully owned teams when sorting</span>
+    </label>
+  </section>
+
+  <section class="panel roster-panel">
+    <div class="roster-header">
+      <h2>Your roster</h2>
+      <div class="filter-tabs" role="tablist">
+        <button type="button" class="filter-tab on" data-filter="all">All</button>
+        <button type="button" class="filter-tab" data-filter="owned">Owned</button>
+        <button type="button" class="filter-tab" data-filter="rented">Rented</button>
+      </div>
+    </div>
+    <div class="list-container">
+      <ul id="rosterList"></ul>
+      <div id="emptyState" class="empty-state hidden">
+        <p>No Pokémon yet.</p>
+        <p>Search above to start building your box.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel backup-panel">
+    <h2>Backup</h2>
+    <div class="backup-actions">
+      <button type="button" class="btn secondary" id="exportBtn">Export JSON</button>
+      <label class="btn secondary file-btn">
+        Import JSON
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </label>
+    </div>
+    <textarea id="importText" class="import-text" placeholder="Or paste exported JSON here, then click Import"></textarea>
+    <button type="button" class="btn primary" id="importBtn">Import from text</button>
+  </section>
+
+  <script src="pokemon_data.js"></script>
+  <script src="roster-utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
