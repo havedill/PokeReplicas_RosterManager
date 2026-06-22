@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-label="Pokebox">
+  <defs>
+    <linearGradient id="bg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c084fc"/>
+      <stop offset="0.55" stop-color="#9333ea"/>
+      <stop offset="1" stop-color="#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="64" y1="18" x2="64" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="36" y1="42" x2="92" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect width="128" height="128" rx="28" fill="url(#shine)"/>
+
+  <rect x="27" y="34" width="74" height="62" rx="16" fill="#1a1028" fill-opacity="0.34"/>
+  <rect x="27" y="34" width="74" height="62" rx="16" stroke="#ffffff" stroke-opacity="0.92" stroke-width="3.5"/>
+  <path d="M27 50.5h74" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="31" y="38" width="66" height="12" rx="8" fill="url(#lid)"/>
+
+  <circle cx="44" cy="62" r="5.5" fill="#ffffff" fill-opacity="0.34"/>
+  <circle cx="64" cy="62" r="5.5" fill="#81c784"/>
+  <circle cx="84" cy="62" r="5.5" fill="#ffffff" fill-opacity="0.34"/>
+
+  <circle cx="44" cy="80" r="5.5" fill="#ffd54f"/>
+  <circle cx="64" cy="80" r="5.5" fill="#ffffff" fill-opacity="0.34"/>
+  <circle cx="84" cy="80" r="5.5" fill="#81c784"/>
+
+  <path d="M64 98c-8.5 0-15.5-2.2-20.5-5.8" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

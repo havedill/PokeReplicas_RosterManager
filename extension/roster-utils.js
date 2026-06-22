@@ -31,6 +31,31 @@ function aliasKeys(slug) {
   return keys;
 }
 
+function displayNameToSlug(name) {
+  if (!name) return "";
+  const trimmed = name.trim();
+  const lower = trimmed.toLowerCase();
+
+  const formMatch = lower.match(/^(.+?)\s*\(([^)]+)\)$/);
+  if (formMatch) {
+    const base = formMatch[1].trim().replace(/\s+/g, "-");
+    const form = formMatch[2].trim().toLowerCase();
+
+    if (form === "hisuian") return `${base}-hisuian`;
+    if (form === "male") return `${base}-male`;
+    if (form === "female") return `${base}-female`;
+    if (form === "wash") return "rotom-wash";
+    if (form === "heat") return "rotom-heat";
+    if (form === "fan") return "rotom-fan";
+    if (form === "mow") return "rotom-mow";
+    if (form === "frost") return "rotom-frost";
+    if (form === "eternal") return "floette-eternal";
+    return `${base}-${form.replace(/\s+/g, "-")}`;
+  }
+
+  return normalizeSlug(trimmed);
+}
+
 function formatPokemonName(slug) {
   return slug
     .split("-")
@@ -131,18 +156,20 @@ function scoreTeamMons(mons, roster, settings) {
   return { ownedCount, rentedCount, matched, total, sortScore };
 }
 
-// Export for popup (no module system in extension scripts)
-if (typeof window !== "undefined") {
-  window.RosterUtils = {
-    ROSTER_ALIASES,
-    normalizeSlug,
-    aliasKeys,
-    formatPokemonName,
-    buildRosterIndex,
-    rosterStatusForSlug,
-    extractSlugFromImg,
-    extractSlugFromMonLink,
-    getTeamMonsFromCard,
-    scoreTeamMons,
-  };
+const RosterUtilsExport = {
+  ROSTER_ALIASES,
+  normalizeSlug,
+  aliasKeys,
+  displayNameToSlug,
+  formatPokemonName,
+  buildRosterIndex,
+  rosterStatusForSlug,
+  extractSlugFromImg,
+  extractSlugFromMonLink,
+  getTeamMonsFromCard,
+  scoreTeamMons,
+};
+
+if (typeof globalThis !== "undefined") {
+  globalThis.RosterUtils = RosterUtilsExport;
 }

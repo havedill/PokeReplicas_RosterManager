@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recommended Picks · Pokebox</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="recommend.css">
+</head>
+<body class="app-shell">
+  <header class="header">
+    <div class="brand-lockup">
+      <img src="logo.svg" class="brand-logo" width="40" height="40" alt="">
+      <div>
+        <h1>Recommended picks</h1>
+        <p class="subtitle">Pokémon that expand your replica team coverage</p>
+      </div>
+    </div>
+    <p class="cache-meta" id="cacheMeta">Loading team index…</p>
+  </header>
+
+  <main class="app-main">
+    <section class="panel panel-fill">
+      <ul id="recommendList" class="recommend-list scroll-area"></ul>
+      <div id="recommendEmpty" class="empty-state hidden">
+        <p>Add Pokémon to your roster to get personalized recommendations.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">Pokebox · auto-refreshes team data every 7 days</footer>
+
+  <script src="roster-utils.js"></script>
+  <script src="recommend.js"></script>
+  <script src="recommend-page.js"></script>
+</body>
+</html>

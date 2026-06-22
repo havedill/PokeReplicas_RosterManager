@@ -11,10 +11,8 @@ const rosterList = document.getElementById("rosterList");
 const emptyState = document.getElementById("emptyState");
 const ownedCountEl = document.getElementById("ownedCount");
 const rentedCountEl = document.getElementById("rentedCount");
-const exportBtn = document.getElementById("exportBtn");
-const importBtn = document.getElementById("importBtn");
-const importFile = document.getElementById("importFile");
-const importText = document.getElementById("importText");
+const openRecommendBtn = document.getElementById("openRecommendBtn");
+const openBackupBtn = document.getElementById("openBackupBtn");
 
 chrome.storage.sync.get(["roster", "settings"], (result) => {
   if (result.roster) roster = result.roster;
@@ -25,10 +23,20 @@ chrome.storage.sync.get(["roster", "settings"], (result) => {
   renderRoster();
 });
 
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area !== "sync") return;
+  if (changes.roster) roster = changes.roster.newValue || {};
+  if (changes.settings) settings = changes.settings.newValue || settings;
+  renderRoster();
+});
+
 prioritizeOwnedCheckbox.addEventListener("change", (e) => {
   settings.prioritizeOwned = e.target.checked;
   saveData();
 });
+
+openRecommendBtn.addEventListener("click", () => WindowManager.openRecommendWindow());
+openBackupBtn.addEventListener("click", () => WindowManager.openBackupWindow());
 
 document.querySelectorAll(".segment").forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -47,16 +55,6 @@ document.querySelectorAll(".filter-tab").forEach((btn) => {
   });
 });
 
-exportBtn.addEventListener("click", exportBackup);
-importBtn.addEventListener("click", () => importBackup(importText.value));
-importFile.addEventListener("change", async (e) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
-  const text = await file.text();
-  importBackup(text);
-  importFile.value = "";
-});
-
 function saveData() {
   chrome.storage.sync.set({ roster, settings });
 }
@@ -70,60 +68,6 @@ function updateStats() {
   const rented = Object.values(roster).filter((s) => s === "rented").length;
   ownedCountEl.textContent = String(owned);
   rentedCountEl.textContent = String(rented);
-}
-
-function exportBackup() {
-  const payload = {
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    roster,
-    settings,
-  };
-
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = `pokebox-backup-${new Date().toISOString().slice(0, 10)}.json`;
-  anchor.click();
-  URL.revokeObjectURL(url);
-}
-
-function importBackup(raw) {
-  if (!raw?.trim()) {
-    alert("Paste or choose a backup file first.");
-    return;
-  }
-
-  try {
-    const data = JSON.parse(raw);
-    const importedRoster = data.roster || data;
-    if (!importedRoster || typeof importedRoster !== "object" || Array.isArray(importedRoster)) {
-      throw new Error("Invalid roster format");
-    }
-
-    const cleaned = {};
-    for (const [name, status] of Object.entries(importedRoster)) {
-      const slug = RosterUtils.normalizeSlug(name);
-      if (!slug) continue;
-      cleaned[slug] = status === "rented" ? "rented" : "owned";
-    }
-
-    roster = cleaned;
-    if (data.settings && typeof data.settings === "object") {
-      settings = {
-        prioritizeOwned: !!data.settings.prioritizeOwned,
-      };
-      prioritizeOwnedCheckbox.checked = settings.prioritizeOwned;
-    }
-
-    saveData();
-    renderRoster();
-    importText.value = "";
-    alert(`Imported ${Object.keys(cleaned).length} Pokémon.`);
-  } catch (err) {
-    alert("Could not import backup. Make sure the JSON is from this extension.");
-  }
 }
 
 searchInput.addEventListener("input", function () {
@@ -193,10 +137,10 @@ document.addEventListener("click", (e) => {
   if (e.target !== searchInput) closeAllLists();
 });
 
-function addPokemon(slug) {
+function addPokemon(slug, status) {
   const key = RosterUtils.normalizeSlug(slug);
   if (!key) return;
-  roster[key] = defaultAddStatus;
+  roster[key] = status || defaultAddStatus;
   saveData();
   renderRoster();
   searchInput.value = "";

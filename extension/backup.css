@@ -1,0 +1,59 @@
+body.app-shell {
+  min-width: 360px;
+  min-height: 420px;
+  height: 100vh;
+}
+
+.panel-fill {
+  gap: 10px;
+}
+
+.backup-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.backup-actions .btn,
+.file-btn {
+  flex: 1;
+  text-align: center;
+}
+
+.file-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.import-text {
+  width: 100%;
+  flex: 1;
+  min-height: 160px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #4a3b63;
+  background: #120d1c;
+  color: var(--text);
+  font-size: 12px;
+  resize: none;
+}
+
+.import-text:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(156, 91, 255, 0.22);
+}
+
+.btn.primary {
+  width: 100%;
+}
+
+.status-msg {
+  margin: 0;
+  font-size: 12px;
+  color: #a5d6a7;
+}
+
+.status-msg.error {
+  color: #ff8a80;
+}

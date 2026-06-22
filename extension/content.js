@@ -44,8 +44,16 @@ function injectControls() {
   const extContainer = document.createElement("div");
   extContainer.className = "fb-field ext-injected";
 
-  const sortLabel = document.createElement("label");
-  sortLabel.className = "ext-sort-label";
+  const labelWrap = document.createElement("div");
+  labelWrap.className = "ext-sort-copy";
+  labelWrap.innerHTML = `
+    <strong>Pokebox sort</strong>
+    <span>Match your roster</span>
+  `;
+
+  const switchLabel = document.createElement("label");
+  switchLabel.className = "ext-switch";
+  switchLabel.title = "Sort by roster match";
 
   const sortCheckbox = document.createElement("input");
   sortCheckbox.type = "checkbox";
@@ -56,10 +64,14 @@ function injectControls() {
     applyAll();
   });
 
-  sortLabel.appendChild(sortCheckbox);
-  sortLabel.appendChild(document.createTextNode("Sort by Roster Match"));
+  const slider = document.createElement("span");
+  slider.className = "ext-switch-slider";
 
-  extContainer.appendChild(sortLabel);
+  switchLabel.appendChild(sortCheckbox);
+  switchLabel.appendChild(slider);
+
+  extContainer.appendChild(labelWrap);
+  extContainer.appendChild(switchLabel);
   fbControls.appendChild(extContainer);
 }
 
