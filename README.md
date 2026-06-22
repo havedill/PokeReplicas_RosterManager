@@ -2,8 +2,10 @@
 
 A Brave extension for [PokeReplicas](https://pokemonchampionsreplicateams.com/) that helps you manage your Pokémon Champions box (owned vs rented), sort teams by roster match, and discover which Pokémon to add next.
 
-<img width="424" height="653" alt="image" src="https://github.com/user-attachments/assets/c985d1b1-9cc7-4426-9e49-2d7bc9175907" />
-<img width="1183" height="560" alt="image" src="https://github.com/user-attachments/assets/7904b384-2fa7-4c09-a10b-9d85df9cc1b5" />
+<img width="459" height="1191" alt="image" src="https://github.com/user-attachments/assets/094b3ce2-70bc-459b-87b9-935ed3711f41" />
+<img width="1356" height="556" alt="image" src="https://github.com/user-attachments/assets/9a76e95b-0d6e-4025-9a14-f221c0310db0" />
+<img width="922" height="681" alt="image" src="https://github.com/user-attachments/assets/6c65d497-f82a-4984-813c-5cef1d2a0d62" />
+
 
 ## Install in Brave
 
