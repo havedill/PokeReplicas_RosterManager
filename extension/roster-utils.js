@@ -147,8 +147,9 @@ function scoreTeamMons(mons, roster, settings) {
   const total = mons.length || 6;
   let sortScore = 0;
 
+  // Match count is always primary; owned/rented only break ties within the same match tier.
   if (settings?.prioritizeOwned) {
-    sortScore = ownedCount * 1000 + rentedCount * 10 + matched;
+    sortScore = matched * 10000 + ownedCount * 100 + rentedCount;
   } else {
     sortScore = matched * 1000 + ownedCount * 10 + rentedCount;
   }

@@ -1,13 +1,39 @@
 .fb-field.ext-injected {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
   padding: 8px 12px;
   margin-left: 8px;
   background: linear-gradient(135deg, rgba(60, 16, 83, 0.95), rgba(91, 31, 138, 0.95));
   border-radius: 14px;
   border: 1px solid #b388ff;
   box-shadow: 0 0 16px rgba(138, 43, 226, 0.28);
+}
+
+.ext-load-all-btn {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f3e5ff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.ext-load-all-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #d8b4fe;
+}
+
+.ext-load-all-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
 }
 
 .ext-sort-copy {
@@ -27,6 +53,12 @@
 .ext-sort-copy span {
   font-size: 11px;
   color: #d7bfff;
+}
+
+.ext-load-status {
+  font-size: 10px;
+  color: #e1bee7;
+  white-space: nowrap;
 }
 
 .ext-switch {
@@ -160,4 +192,40 @@ article.tc.ext-full-match .ext-match-overlay {
 
 article.tc.ext-full-match .ext-match-main {
   color: #a5d6a7;
+}
+
+.ext-code-hint {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.18), rgba(46, 125, 50, 0.1));
+  border: 1px solid rgba(76, 175, 80, 0.55);
+  border-left: 4px solid #43a047;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.12);
+  text-align: left;
+}
+
+.ext-code-hint strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #2e7d32;
+}
+
+.ext-code-hint span {
+  display: block;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #1b5e20;
+}
+
+.ext-code-hint em {
+  font-style: normal;
+  font-weight: 700;
+  color: #1b5e20;
+  text-decoration: underline;
+  text-decoration-color: rgba(27, 94, 32, 0.35);
+  text-underline-offset: 2px;
 }
